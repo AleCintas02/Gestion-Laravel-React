@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
 interface NuevoProducto {
     nombre: string;
@@ -34,13 +35,23 @@ const ModalAgregarProducto: React.FC<{ onAgregarProducto: (producto: NuevoProduc
     
             if (response.ok) {
                 const productoGuardado = await response.json();
-                onAgregarProducto(productoGuardado); // Llama a la función para agregar producto con el producto guardado
+                onAgregarProducto(productoGuardado);
                 setNombre('');
                 setImporte('');
                 setCantidad('');
 
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Producto guardado',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
                 // Recargar la página después de agregar el producto
-                window.location.reload();
+            
             } else {
                 console.error('Error al agregar el producto:', response.statusText);
             }

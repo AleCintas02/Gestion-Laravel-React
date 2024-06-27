@@ -1,6 +1,6 @@
-// src/hooks/useProductos.ts
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 interface Producto {
     id: number;
@@ -26,7 +26,7 @@ const useProductos = () => {
 
     const cargarProductos = () => {
         axios
-            .get(`${endpoint}/productos`)
+            .get<Producto[]>(`${endpoint}/productos`)
             .then((response) => {
                 setProductos(response.data);
             })
@@ -44,10 +44,33 @@ const useProductos = () => {
         cargarProductos();
     };
 
+    const editarProducto = async (producto: Producto) => {
+        try {
+            const response = await axios.put(`${endpoint}/producto/${producto.id}`, {
+                nombre: producto.nombre,
+                importe: producto.importe.toString(),
+                cantidad: producto.cantidad.toString(),
+            });
+            console.log("Producto editado exitosamente:", response.data);
+            cargarProductos(); 
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Producto editado',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } catch (error) {
+            console.error("Error al editar producto:", error);
+        }
+    };
+    
+
     return {
         productos,
         cargarProductos,
         agregarProducto,
+        editarProducto,
     };
 };
 

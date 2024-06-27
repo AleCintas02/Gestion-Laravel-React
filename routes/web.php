@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/productos', [ProductosController::class, 'index']);
         Route::post('/producto', [ProductosController::class, 'store']);
         Route::delete('/producto/{id}', [ProductosController::class, 'destroy']);
+        Route::put('/producto/{id}', [ProductosController::class, 'update']);
+        
         Route::get('/users', [UserController::class, 'index']);
         Route::put('/users/{user}', [UserController::class, 'update']);
     });
