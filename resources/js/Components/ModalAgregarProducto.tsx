@@ -49,8 +49,8 @@ const ModalAgregarProducto: React.FC<{ onAgregarProducto: (producto: NuevoProduc
                 });
                 setTimeout(() => {
                     window.location.reload();
-                }, 1500);
-                // Recargar la página después de agregar el producto
+                }, 1400);
+              
             
             } else {
                 console.error('Error al agregar el producto:', response.statusText);

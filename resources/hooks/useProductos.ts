@@ -44,6 +44,7 @@ const useProductos = () => {
         cargarProductos();
     };
 
+
     const editarProducto = async (producto: Producto) => {
         try {
             const response = await axios.put(`${endpoint}/producto/${producto.id}`, {
@@ -60,6 +61,7 @@ const useProductos = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
+            
         } catch (error) {
             console.error("Error al editar producto:", error);
         }
