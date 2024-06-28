@@ -36,6 +36,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/producto', [ProductosController::class, 'store']);
         Route::delete('/producto/{id}', [ProductosController::class, 'destroy']);
         Route::put('/producto/{id}', [ProductosController::class, 'update']);
+        Route::post('/productos/aumentar-precios', [ProductosController::class, 'aumentarPrecios']);
+        Route::post('/productos/disminuir-precios', [ProductosController::class, 'disminuirPrecios']);
+
         
         Route::get('/users', [UserController::class, 'index']);
         Route::put('/users/{user}', [UserController::class, 'update']);

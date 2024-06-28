@@ -142,6 +142,9 @@ export default function Register({ auth }: PageProps) {
                     </div>
                 </form>
 
+       
+
+
                 <UserTable currentUserId={currentUser.id} />
             </div>
 
