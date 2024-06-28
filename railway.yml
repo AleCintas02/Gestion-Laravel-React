@@ -1,3 +1,0 @@
-services:
-  default:
-    buildCommand: npm run build

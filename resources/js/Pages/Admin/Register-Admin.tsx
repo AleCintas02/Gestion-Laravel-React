@@ -41,7 +41,7 @@ export default function Register({ auth }: PageProps) {
             user={auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Dashboard
+                    Registrar y Administrar usuarios
                 </h2>
             }
         >
